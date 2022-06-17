@@ -27,6 +27,13 @@ public class ContaBanco {
         return agencia;
     }
 
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public BigDecimal getValor() {
+        return valor;
+    }
 
     public int getNumConta() {
         return numConta;
@@ -71,14 +78,14 @@ public class ContaBanco {
 
     public ContaBanco depositar(BigDecimal v) {
         if (this.status == true) {
-            this.saldo = valor.add(valor);
+            this.valor = saldo.add(valor);
         }
         return this;
     }
 
     public ContaBanco sacar(BigDecimal v) {
         if (this.status == true && this.getSaldo().compareTo(BigDecimal.ZERO) >= 0) {
-            this.saldo = valor.subtract(saldo);
+            this.valor = saldo.subtract(valor);
         }
         return this;
     }
