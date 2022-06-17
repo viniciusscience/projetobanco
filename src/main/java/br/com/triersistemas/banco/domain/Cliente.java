@@ -16,4 +16,9 @@ public class Cliente {
         this.nome = nome;
         this.cpf = cpf;
     }
+
+    public void alterar(String nome, String cpf) {
+        this.nome = nome;
+        this.cpf = cpf;
+    }
 }

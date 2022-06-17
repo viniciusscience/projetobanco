@@ -3,18 +3,25 @@ package br.com.triersistemas.banco.domain;
 import br.com.triersistemas.banco.Enuns.StatusConta;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
+import java.util.Random;
 import java.util.UUID;
 
 public class ContaBanco {
 
     private UUID id;
+    private Cliente cliente;
     private int numConta;
     protected String tipo;
     private BigDecimal saldo;
     private StatusConta statusConta;
+    private BigDecimal valor;
     private boolean status;
     private int agencia;
-    private int depositar;
+    private LocalDateTime data;
+    private int senha;
+
+    public int getSenha() {return senha;}
 
     public int getAgencia() {
         return agencia;
@@ -29,7 +36,6 @@ public class ContaBanco {
         return tipo;
     }
 
-
     public BigDecimal getSaldo() {
         return saldo;
     }
@@ -38,45 +44,43 @@ public class ContaBanco {
         return statusConta;
     }
 
-    public int getDepositar() {
-        return depositar;
-    }
+    public UUID getId() {return id;}
 
-    public ContaBanco() {
+    public ContaBanco(Cliente cliente, String tipo, int agencia) {
+        Random gerador = new Random();
         this.id = UUID.randomUUID();
+        this.cliente = cliente;
+        this.statusConta = StatusConta.ABERTA;
         this.saldo = BigDecimal.ZERO;
-        this.statusConta = StatusConta.FECHADA;
-        this.status = false;
-    }
-
-
-    public void abrirConta(String t) {
-        if (this.status = false) {
-            this.tipo = t;
-            this.status = true;
-            this.statusConta=StatusConta.ABERTA;
-        }
+        this.tipo = tipo;
+        this.agencia = agencia;
+        this.data = LocalDateTime.now();
+        this.status = true;
+        this.numConta=gerador.nextInt(0,100);
+        this.senha= gerador.nextInt(0,200);
 
     }
 
     public void fechaConta() {
         if (this.status == true) {
             this.status = false;
-            this.statusConta=StatusConta.FECHADA;
+            this.statusConta = StatusConta.FECHADA;
 
         }
     }
 
-    public void depositar(BigDecimal v) {
+    public ContaBanco depositar(BigDecimal v) {
         if (this.status == true) {
-            saldo = (this.getSaldo().add(v));
+            this.saldo = valor.add(valor);
         }
+        return this;
     }
 
-    public void sacar(BigDecimal v) {
+    public ContaBanco sacar(BigDecimal v) {
         if (this.status == true && this.getSaldo().compareTo(BigDecimal.ZERO) >= 0) {
-            saldo = (this.getSaldo().subtract(v));
+            this.saldo = valor.subtract(saldo);
         }
+        return this;
     }
 
 }
