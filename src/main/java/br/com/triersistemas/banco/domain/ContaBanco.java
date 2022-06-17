@@ -64,7 +64,7 @@ public class ContaBanco {
         this.data = LocalDateTime.now();
         this.status = true;
         this.numConta=gerador.nextInt(0,100);
-        this.senha= gerador.nextInt(0,200);
+        this.senha= gerador.nextInt(1000,2000);
 
     }
 
@@ -78,14 +78,14 @@ public class ContaBanco {
 
     public ContaBanco depositar(BigDecimal v) {
         if (this.status == true) {
-            this.valor = saldo.add(valor);
+            this.saldo = valor;
         }
         return this;
     }
 
     public ContaBanco sacar(BigDecimal v) {
         if (this.status == true && this.getSaldo().compareTo(BigDecimal.ZERO) >= 0) {
-            this.valor = saldo.subtract(valor);
+            this.saldo = saldo.subtract(valor);
         }
         return this;
     }
