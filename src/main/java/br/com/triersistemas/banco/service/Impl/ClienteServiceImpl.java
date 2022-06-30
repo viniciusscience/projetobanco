@@ -30,7 +30,7 @@ public class ClienteServiceImpl implements ClienteService {
 
     @Override
     public Cliente cadastrar(ClienteModel model) {
-        Cliente cliente = new Cliente(model.getNome(), model.getCpf());
+        Cliente cliente = new Cliente(model.getNome(), model.getCpf(), model.getEmail(), model.getTelefone(), model.getDataNascimento(), model.getEndereco());
         clienteRepository.cadastrar(cliente);
         return cliente;
 
@@ -39,7 +39,7 @@ public class ClienteServiceImpl implements ClienteService {
     @Override
     public Cliente alterar(UUID id, ClienteModel model) {
         Cliente cliente = this.consultar(id);
-        cliente.alterar(model.getNome(), model.getCpf());
+        cliente.alterar(model.getNome(), model.getCpf(), model.getEmail(), model.getTelefone(), model.getDataNascimento(), model.getEndereco());
         return cliente;
     }
 

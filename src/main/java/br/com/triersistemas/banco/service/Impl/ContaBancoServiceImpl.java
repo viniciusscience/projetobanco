@@ -35,7 +35,7 @@ public class ContaBancoServiceImpl implements ContaBancoService {
     @Override
     public ContaBanco cadastrar(ContaBancoModel model) {
         var cliente = ClienteService.consultar(model.getIdCliente());
-        var contaBanco = new ContaBanco(cliente, model.getTipo(), model.getAgencia());
+        var contaBanco = new ContaBanco(cliente,model.getIdCliente());
         contaBancoReposity.cadastrar(contaBanco);
         return contaBanco;
     }

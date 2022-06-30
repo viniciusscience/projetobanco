@@ -34,6 +34,7 @@ public class ClienteController {
 
     @DeleteMapping("/remover/{id}")
     public Cliente remover(@PathVariable UUID id) {
+        System.out.println("chegou");
         return clienteService.remover(id);
     }
 }
